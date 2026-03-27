@@ -1,3 +1,9 @@
+# Upstream warpd Changelog
+
+**Note:** This is the changelog for the original warpd project. For changes specific to this enhanced fork, see [CHANGELOG-ENHANCED.md](CHANGELOG-ENHANCED.md).
+
+---
+
 # v1.3.5
 - macos: Various input bugfixes
 - macos: Introduce launchd service (the user should no longer run warpd explicitly)

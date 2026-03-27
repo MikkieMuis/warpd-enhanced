@@ -21,3 +21,4 @@ TODO
 # Keep only these documentation files public:
 !README.md
 !LICENSE
+backups/
