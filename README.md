@@ -98,6 +98,19 @@ The grid shifting feature is platform-agnostic and uses the same input handling 
 
 **Feedback welcome!** If you test on other platforms/distros, please report your experience via [GitHub issues](https://github.com/MikkieMuis/warpd-enhanced/issues).
 
+### Releases & Packages
+
+**Current status:** No official releases or distribution packages yet.
+
+**Installation:** Build from source (see above). The build process is straightforward and takes ~30 seconds.
+
+**Future plans:**
+- Tagged releases may come if there's community interest
+- Distribution packages (AUR, etc.) are not currently planned
+- Feel free to package this for your distribution (attribution appreciated!)
+
+**Note:** This is a personal fork maintained for my own use. For stable, packaged versions of warpd, see the [original project](https://github.com/rvaiya/warpd).
+
 ---
 
 ## Original warpd Description
@@ -318,8 +331,38 @@ A special thanks to
 
 ## About This Fork
 
-This is an enhanced fork maintained by [MikeMuis](https://github.com/MikeMuis). The original warpd is available at [github.com/rvaiya/warpd](https://github.com/rvaiya/warpd).
+**warpd is an excellent tool by [Raheman Vaiya](https://github.com/rvaiya).** This fork simply adds one feature I needed: interactive grid shifting for hint mode on Wayland.
 
-**Why fork?** The original warpd project has had minimal updates (11 commits over 2+ years). This fork adds the interactive grid shifting feature that significantly improves hint mode usability on Wayland, especially for complex UIs where hints don't naturally align with clickable elements.
+**Original warpd:** [github.com/rvaiya/warpd](https://github.com/rvaiya/warpd)
 
-**Contributing:** Feel free to open issues or submit pull requests for this enhanced version. For features that should go upstream, please contribute to the original project.
+### Why This Fork Exists
+
+The original warpd works great! However, on Wayland, hint mode can't detect clickable elements and uses a uniform grid instead. In complex UIs (Thunderbird, file managers, web apps), this grid rarely aligns with actual buttons/links.
+
+This fork adds real-time grid shifting - press Shift+direction keys to move the grid until it aligns perfectly. Problem solved!
+
+### Should You Use This Fork?
+
+**Use the original warpd if:**
+- You're on X11 (hint mode can detect elements)
+- You primarily use grid mode or normal mode
+- You want the stable, well-tested version
+
+**Try this fork if:**
+- You're on Wayland and use hint mode frequently
+- Misaligned hints frustrate you in complex UIs
+- You want to shift the grid manually
+
+### Fork Maintenance
+
+This is primarily a personal fork maintained for my own workflow. I'll:
+- ✅ Keep it working for my use case (openSUSE + Sway)
+- ✅ Accept bug fix PRs
+- ✅ Welcome compatibility reports from other platforms
+- ⚠️  Be selective about feature additions (to keep it simple)
+
+For general warpd features/issues, please use the [upstream project](https://github.com/rvaiya/warpd/issues).
+
+### Contributing
+
+Bug reports and compatibility feedback are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
