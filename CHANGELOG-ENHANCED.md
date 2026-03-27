@@ -31,6 +31,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Updated README with fork information and grid shifting documentation
 - Added Quick Start section for openSUSE Tumbleweed
 - Added Sway/Wayland configuration examples
+- Added compatibility section (tested on openSUSE Tumbleweed + Sway)
+
+### Testing
+- **Primary platform:** openSUSE Tumbleweed + Sway (Wayland)
+- **Expected compatibility:** All platforms supported by upstream warpd (Linux X11/Wayland, macOS)
 
 ## Upstream Version
 

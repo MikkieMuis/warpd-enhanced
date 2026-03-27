@@ -84,6 +84,20 @@ hint_shift_amount: 10          # Grid shift: 10 pixels per keypress
 
 Reload Sway: `$mod+Shift+c`
 
+### Compatibility
+
+**Tested on:**
+- openSUSE Tumbleweed + Sway (Wayland)
+
+**Should work on:**
+- All platforms supported by upstream warpd (Linux X11/Wayland, macOS)
+- Any Wayland compositor (Sway, Hyprland, etc.)
+- X11 window managers (i3, bspwm, etc.)
+
+The grid shifting feature is platform-agnostic and uses the same input handling as the original warpd. If warpd works on your system, this enhanced version should work too.
+
+**Feedback welcome!** If you test on other platforms/distros, please report your experience via [GitHub issues](https://github.com/MikkieMuis/warpd-enhanced/issues).
+
 ---
 
 ## Original warpd Description
