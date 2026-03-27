@@ -4,7 +4,7 @@ Thank you for your interest in contributing!
 
 ## This is a Fork
 
-This is an enhanced fork of [warpd](https://github.com/rvaiya/warpd). For contributions to the original project, please visit the upstream repository.
+This is an enhanced fork of [warpd](https://github.com/rvaiya/warpd) by Raheman Vaiya. All credit for the original warpd project goes to Raheman Vaiya and the upstream contributors. For contributions to the original project, please visit the upstream repository.
 
 ## Reporting Issues
 
