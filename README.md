@@ -77,8 +77,8 @@ bindsym $mod+Escape exec pkill -x warpd  # Emergency exit
 Add to your `~/.config/warpd/config`:
 ```
 hint_chars: abcdefghijklmnopqrstuvwxyz0123456789
-hint_bgcolor: #00000000        # Transparent background
-hint_fgcolor: #ff0000          # Red labels
+hint_bgcolor: #000000          # Black background
+hint_fgcolor: #00ff00          # Green labels
 hint_shift_amount: 10          # Grid shift: 10 pixels per keypress
 ```
 
