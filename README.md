@@ -44,6 +44,46 @@ hint_shift_amount: 10  # pixels to shift per keypress
 3. Once aligned, type the hint label to click
 4. Next activation automatically resets grid position
 
+## Quick Start
+
+### Installation
+
+**For openSUSE Tumbleweed:**
+```bash
+# Install dependencies
+sudo zypper install libXi-devel libXinerama-devel libXtst-devel libXfixes-devel \
+                     libXft-devel wayland-devel libxkbcommon-devel cairo-devel
+
+# Clone and build
+git clone https://github.com/MikkieMuis/warpd-enhanced.git
+cd warpd-enhanced
+make
+sudo make install
+```
+
+**For other distributions:**
+See the [Dependencies](#dependencies) section below for required packages.
+
+### Basic Sway/Wayland Configuration
+
+Add to your `~/.config/sway/config`:
+```
+# warpd keybindings
+bindsym $mod+g exec warpd --grid
+bindsym $mod+h exec warpd --hint --oneshot --click 1
+bindsym $mod+Escape exec pkill -x warpd  # Emergency exit
+```
+
+Add to your `~/.config/warpd/config`:
+```
+hint_chars: abcdefghijklmnopqrstuvwxyz0123456789
+hint_bgcolor: #00000000        # Transparent background
+hint_fgcolor: #ff0000          # Red labels
+hint_shift_amount: 10          # Grid shift: 10 pixels per keypress
+```
+
+Reload Sway: `$mod+Shift+c`
+
 ---
 
 ## Original warpd Description
