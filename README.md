@@ -322,6 +322,7 @@ If you are interesting in adding warpd to your distribution's repository please 
 
 A special thanks to
 
+ - **[Raheman Vaiya](https://github.com/rvaiya)** - For creating warpd and making this fork possible.
  - Pete Fein - For encouragement and early adoption.
  - Matheus Fillipe - For the original border radius patch as well as numerous bug reports and feature requests.
  - The Kaleidoscope/Vimperator projects - For inspiration.
