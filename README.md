@@ -169,13 +169,28 @@ See the LIMITATIONS section of the man page for more details.
 
 Make sure you have the appropriate dependencies for your system:
 
-E.g
+## openSUSE Tumbleweed (Tested):
+
+```
+git clone https://github.com/MikkieMuis/warpd-enhanced.git
+cd warpd-enhanced
+sudo zypper install \
+	libXi-devel \
+	libXinerama-devel \
+	libXtst-devel \
+	libXfixes-devel \
+	libXft-devel \
+	wayland-devel \
+	libxkbcommon-devel \
+	cairo-devel &&
+make && sudo make install
+```
 
 ## debian/ubuntu:
 
 ```
-git clone https://github.com/rvaiya/warpd.git
-cd warpd
+git clone https://github.com/MikkieMuis/warpd-enhanced.git
+cd warpd-enhanced
 sudo apt-get install \
 	libxi-dev \
 	libxinerama-dev \
