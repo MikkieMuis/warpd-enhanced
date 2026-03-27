@@ -241,6 +241,10 @@ static int hint_selection(screen_t scr, struct hint *_hints, size_t _nr_hints)
 			if (!name || name[1])
 				continue;
 
+			/* Ignore K (Shift+k) to prevent accidental triggering */
+			if (name[0] == 'K')
+				continue;
+
 			buf[len++] = name[0];
 		}
 
