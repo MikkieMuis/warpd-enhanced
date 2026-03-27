@@ -12,6 +12,10 @@ struct hint matched[MAX_HINTS];
 static size_t nr_hints;
 static size_t nr_matched;
 
+/* Grid shift offsets (reset each activation) */
+static int hint_offset_x = 0;
+static int hint_offset_y = 0;
+
 char last_selected_hint[32];
 
 static void filter(screen_t scr, const char *s)
@@ -75,8 +79,8 @@ static size_t generate_fullscreen_hints(screen_t scr, struct hint *hints)
 		for (j = 0; j < nr; j++) {
 			struct hint *hint = &hints[n++];
 
-			hint->x = x;
-			hint->y = y;
+			hint->x = x + hint_offset_x;
+			hint->y = y + hint_offset_y;
 
 			hint->w = w;
 			hint->h = h;
@@ -97,6 +101,10 @@ static size_t generate_fullscreen_hints(screen_t scr, struct hint *hints)
 
 static int hint_selection(screen_t scr, struct hint *_hints, size_t _nr_hints)
 {
+	/* Reset grid shift offsets */
+	hint_offset_x = 0;
+	hint_offset_y = 0;
+
 	hints = _hints;
 	nr_hints = _nr_hints;
 
@@ -112,6 +120,14 @@ static int hint_selection(screen_t scr, struct hint *_hints, size_t _nr_hints)
 		"hint_exit",
 		"hint_undo_all",
 		"hint_undo",
+		"hint_shift_up",
+		"hint_shift_down",
+		"hint_shift_left",
+		"hint_shift_right",
+		"hint_shift_up_left",
+		"hint_shift_up_right",
+		"hint_shift_down_left",
+		"hint_shift_down_right",
 	};
 
 	config_input_whitelist(keys, sizeof keys / sizeof keys[0]);
@@ -135,6 +151,90 @@ static int hint_selection(screen_t scr, struct hint *_hints, size_t _nr_hints)
 		} else if (config_input_match(ev, "hint_undo")) {
 			if (len)
 				buf[len - 1] = 0;
+		} else if (config_input_match(ev, "hint_shift_up")) {
+			size_t i;
+			hint_offset_y -= config_get_int("hint_shift_amount");
+			/* Update all existing hint positions */
+			for (i = 0; i < nr_hints; i++) {
+				hints[i].y -= config_get_int("hint_shift_amount");
+			}
+			filter(scr, buf);
+			continue;
+		} else if (config_input_match(ev, "hint_shift_down")) {
+			size_t i;
+			hint_offset_y += config_get_int("hint_shift_amount");
+			/* Update all existing hint positions */
+			for (i = 0; i < nr_hints; i++) {
+				hints[i].y += config_get_int("hint_shift_amount");
+			}
+			filter(scr, buf);
+			continue;
+		} else if (config_input_match(ev, "hint_shift_left")) {
+			size_t i;
+			hint_offset_x -= config_get_int("hint_shift_amount");
+			/* Update all existing hint positions */
+			for (i = 0; i < nr_hints; i++) {
+				hints[i].x -= config_get_int("hint_shift_amount");
+			}
+			filter(scr, buf);
+			continue;
+		} else if (config_input_match(ev, "hint_shift_right")) {
+			size_t i;
+			hint_offset_x += config_get_int("hint_shift_amount");
+			/* Update all existing hint positions */
+			for (i = 0; i < nr_hints; i++) {
+				hints[i].x += config_get_int("hint_shift_amount");
+			}
+			filter(scr, buf);
+			continue;
+		} else if (config_input_match(ev, "hint_shift_up_left")) {
+			size_t i;
+			int amount = config_get_int("hint_shift_amount");
+			hint_offset_x -= amount;
+			hint_offset_y -= amount;
+			/* Update all existing hint positions */
+			for (i = 0; i < nr_hints; i++) {
+				hints[i].x -= amount;
+				hints[i].y -= amount;
+			}
+			filter(scr, buf);
+			continue;
+		} else if (config_input_match(ev, "hint_shift_up_right")) {
+			size_t i;
+			int amount = config_get_int("hint_shift_amount");
+			hint_offset_x += amount;
+			hint_offset_y -= amount;
+			/* Update all existing hint positions */
+			for (i = 0; i < nr_hints; i++) {
+				hints[i].x += amount;
+				hints[i].y -= amount;
+			}
+			filter(scr, buf);
+			continue;
+		} else if (config_input_match(ev, "hint_shift_down_left")) {
+			size_t i;
+			int amount = config_get_int("hint_shift_amount");
+			hint_offset_x -= amount;
+			hint_offset_y += amount;
+			/* Update all existing hint positions */
+			for (i = 0; i < nr_hints; i++) {
+				hints[i].x -= amount;
+				hints[i].y += amount;
+			}
+			filter(scr, buf);
+			continue;
+		} else if (config_input_match(ev, "hint_shift_down_right")) {
+			size_t i;
+			int amount = config_get_int("hint_shift_amount");
+			hint_offset_x += amount;
+			hint_offset_y += amount;
+			/* Update all existing hint positions */
+			for (i = 0; i < nr_hints; i++) {
+				hints[i].x += amount;
+				hints[i].y += amount;
+			}
+			filter(scr, buf);
+			continue;
 		} else {
 			const char *name = input_event_tostr(ev);
 

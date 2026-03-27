@@ -11,3 +11,13 @@ bin/
 dist/
 *.obj
 *.exe
+
+# Personal documentation (not for public repo)
+docs/
+patches/
+WORKING_FINAL.md
+TODO
+
+# Keep only these documentation files public:
+!README.md
+!LICENSE

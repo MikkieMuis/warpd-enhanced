@@ -101,6 +101,16 @@ static struct {
 	{ "hint_undo", "backspace", "undo last selection step in one of the hint based modes.", OPT_KEY },
 	{ "hint_undo_all", "C-u", "undo all selection steps in one of the hint based modes.", OPT_KEY },
 
+	{ "hint_shift_amount", "10", "The number of pixels to shift the hint grid per keypress.", OPT_INT },
+	{ "hint_shift_down", "M", "Shift the hint grid down (Shift+m).", OPT_KEY },
+	{ "hint_shift_down_left", "less", "Shift the hint grid down-left (Shift+comma).", OPT_KEY },
+	{ "hint_shift_down_right", "greater", "Shift the hint grid down-right (Shift+period).", OPT_KEY },
+	{ "hint_shift_left", "J", "Shift the hint grid left (Shift+j).", OPT_KEY },
+	{ "hint_shift_right", "L", "Shift the hint grid right (Shift+l).", OPT_KEY },
+	{ "hint_shift_up", "I", "Shift the hint grid up (Shift+i).", OPT_KEY },
+	{ "hint_shift_up_left", "U", "Shift the hint grid up-left (Shift+u).", OPT_KEY },
+	{ "hint_shift_up_right", "O", "Shift the hint grid up-right (Shift+o).", OPT_KEY },
+
 	{ "hint2_chars", "hjkl;asdfgqwertyuiopzxcvb", "The character set used for the second hint selection, should consist of at least hint2_grid_size^2 characters.", OPT_STRING },
 	{ "hint2_size", "20", "The size of hints in the secondary grid (range: 1-1000).", OPT_INT },
 	{ "hint2_gap_size", "1", "The spacing between hints in the secondary grid. (range: 1-1000)", OPT_INT },
