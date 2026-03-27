@@ -1,6 +1,52 @@
-# What
+# warpd-enhanced
+
+**An enhanced fork of [warpd](https://github.com/rvaiya/warpd) with interactive grid shifting**
 
 A modal keyboard driven interface for mouse manipulation.
+
+## Enhancements in this Fork
+
+### Interactive 8-Way Grid Shifting
+
+This fork adds **real-time manual grid alignment** for hint mode, solving the problem where hint labels don't align with actual UI elements in applications like Thunderbird, file managers, or complex web interfaces.
+
+**Features:**
+- **8-way directional shifting**: Move the entire hint grid in any direction using intuitive Shift+key combinations
+- **Configurable shift amount**: Control how many pixels to move per keypress (default: 10px)
+- **Accumulative shifts**: Multiple keypresses stack for precise positioning
+- **Auto-reset**: Grid position resets on each new hint mode activation
+- **Zero visual overhead**: No additional UI elements, just the grid moving in real-time
+
+**Key Bindings:**
+```
+Shift+U    Shift+I    Shift+O
+   ↖          ↑          ↗
+(up-left)   (up)   (up-right)
+
+Shift+J                Shift+L
+   ←                      →
+ (left)               (right)
+
+Shift+<    Shift+M    Shift+>
+   ↙          ↓          ↘
+(down-left) (down) (down-right)
+```
+
+**Configuration:**
+Add to your `~/.config/warpd/config`:
+```
+hint_shift_amount: 10  # pixels to shift per keypress
+```
+
+**Usage Example:**
+1. Activate hint mode: `Super+h`
+2. Grid doesn't align? Press `Shift+I` to shift up, `Shift+L` to shift right, etc.
+3. Once aligned, type the hint label to click
+4. Next activation automatically resets grid position
+
+---
+
+## Original warpd Description
 
 # Demo
 
@@ -213,3 +259,13 @@ A special thanks to
  - Matheus Fillipe - For the original border radius patch as well as numerous bug reports and feature requests.
  - The Kaleidoscope/Vimperator projects - For inspiration.
  - Drew Devault - For making the Wayland ecosystem inhabitable.
+
+---
+
+## About This Fork
+
+This is an enhanced fork maintained by [MikeMuis](https://github.com/MikeMuis). The original warpd is available at [github.com/rvaiya/warpd](https://github.com/rvaiya/warpd).
+
+**Why fork?** The original warpd project has had minimal updates (11 commits over 2+ years). This fork adds the interactive grid shifting feature that significantly improves hint mode usability on Wayland, especially for complex UIs where hints don't naturally align with clickable elements.
+
+**Contributing:** Feel free to open issues or submit pull requests for this enhanced version. For features that should go upstream, please contribute to the original project.
