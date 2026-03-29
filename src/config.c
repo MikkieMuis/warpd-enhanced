@@ -102,9 +102,9 @@ static struct {
 	{ "hint_undo_all", "C-u", "undo all selection steps in one of the hint based modes.", OPT_KEY },
 
 	{ "hint_shift_amount", "10", "The number of pixels to shift the hint grid per keypress.", OPT_INT },
-	{ "hint_shift_down", "M", "Shift the hint grid down (Shift+m).", OPT_KEY },
-	{ "hint_shift_down_left", "less", "Shift the hint grid down-left (Shift+comma).", OPT_KEY },
-	{ "hint_shift_down_right", "greater", "Shift the hint grid down-right (Shift+period).", OPT_KEY },
+	{ "hint_shift_down", "less", "Shift the hint grid down (Shift+comma = <).", OPT_KEY },
+	{ "hint_shift_down_left", "unbind", "Shift the hint grid down-left (disabled to prevent confusion).", OPT_KEY },
+	{ "hint_shift_down_right", "greater", "Shift the hint grid down-right (Shift+period = >).", OPT_KEY },
 	{ "hint_shift_left", "J", "Shift the hint grid left (Shift+j).", OPT_KEY },
 	{ "hint_shift_right", "L", "Shift the hint grid right (Shift+l).", OPT_KEY },
 	{ "hint_shift_up", "I", "Shift the hint grid up (Shift+i).", OPT_KEY },
