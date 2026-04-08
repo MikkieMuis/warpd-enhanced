@@ -146,7 +146,7 @@ struct input_event *grid_mode()
 			my += grid_height / 2;
 
 			platform->mouse_move(scr, mx, my);
-			redraw(mx, my, 0);
+			redraw(mx, my, 1);
 		}
 
 		if (config_input_match(ev, "grid_cut_up")) {

@@ -17,7 +17,7 @@ static struct {
 	{ "hint_activation_key", "A-M-x", "Activates hint mode.", OPT_KEY },
 	{ "hint2_activation_key", "A-M-X", "Activate two pass hint mode.", OPT_KEY },
 	{ "grid_activation_key", "A-M-g", "Activates grid mode and allows for further manipulation of the pointer using the mapped keys.", OPT_KEY },
-	{ "history_activation_key", "A-M-h", "Activate history mode.", OPT_KEY },
+	{ "history_activation_key", "unbind", "Activate history mode.", OPT_KEY },
 	{ "screen_activation_key", "A-M-s", "Activate (s)creen selection mode.", OPT_KEY },
 	{ "activation_key", "A-M-c", "Activate normal movement mode (manual (c)ursor movement).", OPT_KEY },
 
@@ -182,10 +182,38 @@ static void validate_key_option(const char *s)
 static void config_add(const char *key, const char *val)
 {
 	struct config_entry *ent;
-	ent = malloc(sizeof(struct config_entry));
 
 	assert(strlen(key) < sizeof ent->key);
 	assert(strlen(val) < sizeof ent->value);
+
+	/* Replace existing entry with same key instead of duplicating. */
+	for (ent = config; ent; ent = ent->next) {
+		if (!strcmp(ent->key, key)) {
+			strcpy(ent->value, val);
+
+			switch (ent->type) {
+				int i;
+
+				case OPT_INT:
+					for (i = 0; ent->value[i]; i++)
+						if (!isdigit(ent->value[i]) && !(i == 0 && ent->value[0] == '-')) {
+							fprintf(stderr, "ERROR: %s must be a valid int\n", ent->value);
+							exit(-1);
+						}
+					break;
+				case OPT_BUTTON:
+				case OPT_KEY:
+					validate_key_option(ent->value);
+					break;
+
+				default:
+					break;
+			}
+			return;
+		}
+	}
+
+	ent = malloc(sizeof(struct config_entry));
 
 	strcpy(ent->key, key);
 	strcpy(ent->value, val);
